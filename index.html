@@ -1,1 +1,37 @@
-hi xiaole
+
+
+<html>
+<head>
+	<script src="https://local.qa.webex.com/latest/3rd-framework/jquery-1.7.2.min.js"></script>
+	<script src="https://local.qa.webex.com/latest/pbconfig.js"></script>
+	<script src="https://local.qa.webex.com/latest/web-content/pbloader.js"></script>
+
+</head>
+<body>
+<script>
+	window.pbLoader.launchMeeting({
+			launchType: "join",
+			MeetingKey: "116623791",
+			userEmail: "devtest@test.com",
+			userDisplayName: "Testing Engineer",
+			password: "111111",
+			siteURL: "https://t29cmri1.qa.webex.com/t29cmri1",
+			hostAvatarURL: "",
+			sessionTicket: "",
+			userName: "",
+			isPersonalRoom: true,
+			spaceMeeting: false,
+			hostDisplayName: ""
+
+		}, {
+			start_handler: function () {
+				console.log("Meeting start handler called.");
+			},
+			close_handler: function () {
+				console.log("Meeting close handler called.");
+			}
+		}
+	);
+</script>
+</body>
+</html>
