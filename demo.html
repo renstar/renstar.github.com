@@ -5,51 +5,7 @@
 	<meta charset="utf-8"/>
 	<link rel="stylesheet" href="https://local.qa.webex.com/latest/web-content/_demo/demoLoader.css"/>
 	<script src="https://local.qa.webex.com/latest/3rd-framework/jquery-1.7.2.min.js"></script>
-	<script src="https://local.qa.webex.com/latest/pbconfig.js"></script>
-	<script src="https://local.qa.webex.com/latest/web-content/pbloader.js"></script>
 
-	<script>
-		//jump to https for development. 55555 is xiaole's port. if other need customized port, add it behind 55555.
-		var demoConf = {},
-			$MeetingKey = document.getElementById("MeetingKey"),
-			$siteURL = document.getElementById("siteURL"),
-			$userName = document.getElementById("userDisplayName"),
-			$password = document.getElementById("password");
-
-		window.preConf = {
-			langStr: demoConf.lang,
-			loadType: "separated",
-			cachePage: true,
-			debug: true
-		};
-
-		window.joinMeeting = function () {
-
-			window.pbLoader.launchMeeting({
-					launchType: "join",
-					MeetingKey: $MeetingKey.val().replace(/ /g, ""),
-					userEmail: "test@cisco.com",
-					userDisplayName: $userDisplayName.val(),
-					password: $password.val(),
-					siteURL: $siteURL.val(),
-					//hostAvatarURL: $hostAvatarURL.val(),
-					//sessionTicket: isGetHostRole ? $sessionTicket.val() || "" : "",
-					userName: $userName.val()
-					//isPersonalRoom: $isPersonalRoom.val() === "Yes",
-					//spaceMeeting: $spaceMeeting.val() === "Yes",
-					//hostDisplayName: $hostName.val()
-
-				}, {
-					start_handler: function() {
-						console.log("[@Train]: Meeting start handler applied.");
-					},
-					close_handler: function() {
-						console.log("[@Train]: Meeting close handler applied.");
-					}
-				}
-			);
-		};
-	</script>
 
 </head>
 <body>
@@ -85,12 +41,54 @@
 	</table>
 	<div class="command">
 
-        <button onclick="joinMeeting()" style="font-weight:bold; color: #0000a9;">Attendee Join</button>
+		<button onclick="joinMeeting()" style="font-weight:bold; color: #0000a9;">Attendee Join</button>
 
 
 	</div>
 </div>
 <div id="img_hostAvatar"></div>
+
+<script src="https://local.qa.webex.com/latest/pbconfig.js"></script>
+<script src="https://local.qa.webex.com/latest/web-content/pbloader.js"></script>
+
+<script>
+	//jump to https for development. 55555 is xiaole's port. if other need customized port, add it behind 55555.
+	var demoConf = {};
+	window.preConf = {
+		langStr: demoConf.lang,
+		loadType: "separated",
+		cachePage: true,
+		debug: true
+	};
+	window.joinMeeting = function () {
+		var $MeetingKey = document.getElementById("MeetingKey"),
+			$siteURL = document.getElementById("siteURL"),
+			$userName = document.getElementById("userDisplayName"),
+			$password = document.getElementById("password");
+		window.pbLoader.launchMeeting({
+				launchType: "join",
+				MeetingKey: $MeetingKey.value.replace(/ /g, ""),
+				userEmail: "test@cisco.com",
+				//userDisplayName: $userDisplayName.value,
+				password: $password.value,
+				siteURL: $siteURL.value,
+				//hostAvatarURL: $hostAvatarURL.val(),
+				//sessionTicket: isGetHostRole ? $sessionTicket.val() || "" : "",
+				userName: $userName.value
+				//isPersonalRoom: $isPersonalRoom.val() === "Yes",
+				//spaceMeeting: $spaceMeeting.val() === "Yes",
+				//hostDisplayName: $hostName.val()
+			}, {
+				start_handler: function() {
+					console.log("[@Train]: Meeting start handler applied.");
+				},
+				close_handler: function() {
+					console.log("[@Train]: Meeting close handler applied.");
+				}
+			}
+		);
+	};
+</script>
 </body>
 
 </html>
