@@ -4,26 +4,30 @@
 	<title>For v3 new loader</title>
 	<meta charset="utf-8"/>
 	<script src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
-	
+
 	<style>
-		.joinForm{
+		.joinForm {
 			text-align: center;
 		}
+
 		.form_table {
 			padding: 10px;
 			display: inline-block;
 			margin: 0 auto;
 			border: 1px solid
 		}
+
 		div {
 			margin: 20px 0;
 		}
+
 		label {
 			display: inline-block;
 			width: 150px;
 			text-align: left;
 		}
-		input{
+
+		input {
 			display: inline-block;
 			width: 300px
 		}
@@ -50,53 +54,33 @@
 	</div>
 </div>
 
-	
-	<script src="https://t29cmri1.qa.webex.com/pb/web/latest3.0/pbconfig.js"></script>
-	<script src="https://t29cmri1.qa.webex.com/pb/web/latest3.0/pbloader.js"></script>
 
-	<script>
-		//jump to https for development. 55555 is xiaole's port. if other need customized port, add it behind 55555.
-		var demoConf = {};
+<script src="https://t29cmri1.qa.webex.com/pb/web/latest3.0/pbconfig.js"></script>
+<script src="https://t29cmri1.qa.webex.com/pb/web/latest3.0/pbloader.js"></script>
 
+<script>
+	window.joinMeeting = function() {
+		var $MeetingKey = document.getElementById("MeetingKey"),
+			$siteURL = document.getElementById("siteURL"),
+			$userName = document.getElementById("userDisplayName");
 
-		window.preConf = {
-			langStr: demoConf.lang,
-			loadType: "separated",
-			cachePage: true,
-			debug: true
-		};
-
-		window.joinMeeting = function () {
-			var $MeetingKey = document.getElementById("MeetingKey"),
-				$siteURL = document.getElementById("siteURL"),
-				$userName = document.getElementById("userDisplayName");
-
-
-			window.pbLoader.launchMeeting({
-					launchType: "join",
-					MeetingKey: $MeetingKey.value.replace(/ /g, ""),
-					userEmail: "test@cisco.com",
-					userDisplayName: $userName.value,
-				
-					siteURL: $siteURL.value,
-					//hostAvatarURL: $hostAvatarURL.val(),
-					//sessionTicket: isGetHostRole ? $sessionTicket.val() || "" : "",
-					userName: $userName.value
-					//isPersonalRoom: $isPersonalRoom.val() === "Yes",
-					//spaceMeeting: $spaceMeeting.val() === "Yes",
-					//hostDisplayName: $hostName.val()
-
-				}, {
-					start_handler: function() {
-						console.log("[@Train]: Meeting start handler applied.");
-					},
-					close_handler: function() {
-						console.log("[@Train]: Meeting close handler applied.");
-					}
+		window.pbLoader.launchMeeting({
+				launchType: "join",
+				MeetingKey: $MeetingKey.value.replace(/ /g, ""),
+				userEmail: "test@cisco.com",
+				userDisplayName: $userName.value,
+				siteURL: $siteURL.value
+			}, {
+				start_handler: function() {
+					console.log("[@Train]: Meeting start handler applied.");
+				},
+				close_handler: function() {
+					console.log("[@Train]: Meeting close handler applied.");
 				}
-			);
-		};
-	</script>
+			}
+		);
+	};
+</script>
 </body>
 
 </html>
