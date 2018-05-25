@@ -1,37 +1,174 @@
-
-
+<!DOCTYPE html>
 <html>
 <head>
-	<script src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+	<title>For v3 new loader</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="https://local.qa.webex.com/latest/web-content/_demo/demoLoader.css"/>
+	<script>
+		//jump to https for development. 55555 is xiaole's port. if other need customized port, add it behind 55555.
+		var demoConf = {};
+		if (location.href.match(/:55555/)) {
+			location.href = "https://" + location.hostname + "/latest/mc/" + location.pathname.replace(/^.*\/([^\/]+\/[^\/]+)$/, "$1") + location.search;
+		}
+		if (location.search.match(/lang=([a-z]{2}_[A-Z]{2})/)) {
+			demoConf.lang = location.search.replace(/.*(lang=[a-z]{2}_[A-Z]{2}).*/, "$1");
+		}
+		if (location.search.match(/site=([a-z0-9\.\/\:]+)/)) {
+			demoConf.site = location.search.replace(/.*site=([a-z0-9\.\/\:]+).*/, "$1");
+		}
+		if (location.search.match(/key=([0-9]+)/)) {
+			demoConf.key = location.search.replace(/.*key=([0-9]+).*/, "$1");
+		}
+		if (location.search.match(/start=yes/)) {
+			demoConf.autoStart = true;
+		}
+		window.preConf = {
+			langStr: demoConf.lang,
+			loadType: "separated",
+			cachePage: true,
+			debug: true
+		};
+	</script>
+	<script src="https://local.qa.webex.com/latest/3rd-framework/jquery-1.7.2.min.js"></script>
 	<script src="https://local.qa.webex.com/latest/pbconfig.js"></script>
-	<script src="https://local.qa.webex.com/latest/web-content/pbloader.js"></script>
-
 </head>
 <body>
-<script>
-	window.pbLoader.launchMeeting({
-			launchType: "join",
-			MeetingKey: "110321506",
-			userEmail: "devtest@test.com",
-			userDisplayName: "Testing Engineer",
-			password: "111111",
-			siteURL: "https://t29cmri1.qa.webex.com/t29cmri1",
-			hostAvatarURL: "",
-			sessionTicket: "",
-			userName: "",
-			isPersonalRoom: true,
-			spaceMeeting: false,
-			hostDisplayName: ""
+<div id="joinForm">
+	<table>
+		<tr>
+			<td class="meetingForm">
+				<div>
+					<label id="goSiteURL" for="siteURL">Site URL*:</label>
+					<input id="siteURL" type="text"><select id="siteURLsel">
+					<option value="https://go.webex.com/go">go.webex</option>
+					<option value="https://pbfortrain.qa.webex.com/pbfortrain">pbfortrain</option>
+					<option value="https://t29cmri1.qa.webex.com/t29cmri1">t29cmri1</option>
+					<option value="https://t29pmrq1.qa.webex.com/t29pmrq1">t29pmrq1</option>
+					<option value="https://t29pmrr1.qa.webex.com/t29pmrr1">t29pmrr1</option>
+					<option value="https://alpha.webex.com/alpha">alpha.webex</option>
+					<option value="https://cisco.webex.com/cisco">cisco.webex</option>
+					<option value="https://hzcet08.qa.webex.com/hzcet08">hzcet08</option>
 
-		}, {
-			start_handler: function () {
-				console.log("Meeting start handler called.");
-			},
-			close_handler: function () {
-				console.log("Meeting close handler called.");
-			}
-		}
-	);
-</script>
+
+
+				</select>
+				</div>
+				<div>
+					<label for="MeetingKey">Meeting Key*:</label>
+					<input id="MeetingKey" type=text list=KeyValue>
+					<datalist id=KeyValue>
+						<option>017 443 167</option>
+						<option>019 410 173</option>
+						<option>100 546 252</option>
+						<option>011 656 106</option>
+					</datalist>
+					<label class="col2label" for="password">Password:</label>
+					<input id="password" type="text">
+
+				</div>
+				<div>
+					<label for="userEmail">User Email*:</label>
+					<input id="userEmail" type="text">
+					<label class="col2label" for="language">Language:</label>
+					<select id="language" class="minor">
+						<option value="ar_SA">ar_SA</option>
+						<option value="da_DK">da_DK</option>
+						<option value="de_DE">de_DE</option>
+						<option value="en_US">en_US</option>
+						<option value="es_ES">es_ES</option>
+						<option value="es_SP">es_SP</option>
+						<option value="fr_FR">fr_FR</option>
+						<option value="it_IT">it_IT</option>
+						<option value="ja_JP">ja_JP</option>
+						<option value="ko_KR">ko_KR</option>
+						<option value="nl_NL">nl_NL</option>
+						<option value="pt_BR">pt_BR</option>
+						<option value="ru_RU">ru_RU</option>
+						<option value="sv_SE">sv_SE</option>
+						<option value="tr_TR">tr_TR</option>
+						<option value="zh_CN">zh_CN</option>
+						<option value="zh_TW">zh_TW</option>
+					</select>
+				</div>
+				<div>
+					<label for="userDisplayName">Display Name*:</label>
+					<input id="userDisplayName" type="text">
+					<label class="col2label" for="hostAvatar">Avatar:</label>
+					<input type="hidden" id="hostAvatarURL" value="">
+					<select id="hostAvatar" class="minor">
+						<option value="none">none</option>
+						<option value="chang">Chang</option>
+						<option value="faye">Faye</option>
+						<option value="hilary">Hilary</option>
+						<option value="mickel">Mickel</option>
+						<option value="king">King</option>
+						<option value="Othella">Othella</option>
+						<option value="xiaole">Xiaole</option>
+					</select>
+				</div>
+				<div>
+					<label for="hostName" class="minor">Host Name:</label>
+					<input id="hostName" type="text" class="minor">
+					<label class="col2label" for="isPersonalRoom">Is PMR:</label>
+					<select id="isPersonalRoom" class="minor">
+						<option value="Yes">Yes</option>
+						<option value="No">No</option>
+					</select>
+				</div>
+				<div>
+					<label for="userName" class="minor">User Name:</label>
+					<input id="userName" class="minor" type="text">
+					<label class="col2label" for="sessionTicket" onclick="clearSessionTicket()">SessTicket:</label>
+					<input id="sessionTicket" type="text" class="minor">
+				</div>
+				<div>
+					<label for="isPersonalRoom" class="minor">Is Spark:</label>
+					<select id="spaceMeeting" class="minor">
+						<option value="No">No</option>
+						<option value="Yes">Yes</option>
+					</select>
+					<label for="apiLogin" class="minor" style="width:65px; ">API Login:</label>
+					<select id="apiLogin" class="minor" style="width:160px;">
+						<option value="liuliu:P@ss123">liuliu:P@ss123</option>
+						<option value="liuliu:C!sc0123">liuliu:C!sc0123</option>
+						<option value="xiaole:god@8848.com">xiaole:god@8848.com</option>
+						<option value="faye:P@ss1234">faye:P@ss1234</option>
+						<option value="faye10:P@ss1234">faye10:P@ss1234</option>
+						<option value="faye:P@ss12345">faye:P@ss12345</option>
+						<option value="nada:P@ss1234">nada:P@ss1234</option>
+					</select>
+					<button id="apiButton" onclick="apiLogin()" class="minor" style="background: none; width:60px;">Go</button>
+
+				</div>
+				<span class="b1"></span>
+				<span class="b2"></span>
+				<span class="b3"></span>
+				<span class="b4"></span>
+			</td>
+			<td class="debug">
+				<div><label for="logOff">Turn off log:</label></div>
+				<div><textarea id="logOff" class="logOff"></textarea></div>
+				<button onclick="turnOffLog()">Turn Off Log</button>
+				<button onclick="apiLogin()" class="minor debugui">Debug UI</button>
+			</td>
+		</tr>
+	</table>
+	<div class="command">
+        <span class="combine"><button onclick="startMeeting()"
+									  style="font-weight:bold; color: #a90000;">Host Start</button></span>
+		<span class="combine">
+            <input id="getHostRole" type="checkbox" class="minor checkbox">
+                    <label for="getHostRole" class="minor checkbox">Join & get host</label><br>
+        <button onclick="joinMeeting()" style="font-weight:bold; color: #0000a9;">Attendee Join</button>
+        </span>
+		<span class="combine"><button onclick="randName(1)"
+									  style="font-weight:bold; color: #00a900;">Smart Join</button></span>
+		<span class="combine"><button onclick="clearStorage()">Wipe Usage</button></span>
+		<span class="combine"><button onclick="newLoader()">Open new loader</button></span>
+
+	</div>
+</div>
+<div id="img_hostAvatar"></div>
 </body>
+<script src="https://local.qa.webex.com/latest/web-content/_demo/demoLoader.js"></script>
 </html>
