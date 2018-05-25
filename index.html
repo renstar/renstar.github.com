@@ -20,7 +20,7 @@
 				<div>
 					<label for="MeetingKey">Meeting Key*:</label>
 					<input id="MeetingKey" type=text>
-					<label class="col2label" for="password">Password:</label>
+				
 					
 				</div>
 
@@ -72,14 +72,14 @@
 			var $MeetingKey = document.getElementById("MeetingKey"),
 				$siteURL = document.getElementById("siteURL"),
 				$userName = document.getElementById("userDisplayName"),
-				$password = document.getElementById("password");
+				
 
 			window.pbLoader.launchMeeting({
 					launchType: "join",
 					MeetingKey: $MeetingKey.value.replace(/ /g, ""),
 					userEmail: "test@cisco.com",
 					//userDisplayName: $userDisplayName.value,
-					password: $password.value,
+				
 					siteURL: $siteURL.value,
 					//hostAvatarURL: $hostAvatarURL.val(),
 					//sessionTicket: isGetHostRole ? $sessionTicket.val() || "" : "",
