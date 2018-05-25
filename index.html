@@ -5,7 +5,50 @@
 	<meta charset="utf-8"/>
 	<link rel="stylesheet" href="https://local.qa.webex.com/latest/web-content/_demo/demoLoader.css"/>
 	<script src="https://local.qa.webex.com/latest/3rd-framework/jquery-1.7.2.min.js"></script>
-	<script src="https://local.qa.webex.com/latest/pbconfig.js"></script>
+	
+
+</head>
+<body>
+<div id="joinForm">
+	<table>
+		<tr>
+			<td class="meetingForm">
+				<div>
+					<label id="goSiteURL" for="siteURL">Site URL*:</label>
+					<input id="siteURL" type="text">
+				</div>
+				<div>
+					<label for="MeetingKey">Meeting Key*:</label>
+					<input id="MeetingKey" type=text>
+					<label class="col2label" for="password">Password:</label>
+					<input id="password" type="text">
+				</div>
+
+				<div>
+					<label for="userDisplayName">Display Name*:</label>
+					<input id="userDisplayName" type="text">
+				</div>
+
+
+
+				<span class="b1"></span>
+				<span class="b2"></span>
+				<span class="b3"></span>
+				<span class="b4"></span>
+			</td>
+
+		</tr>
+	</table>
+	<div class="command">
+
+        <button onclick="joinMeeting()" style="font-weight:bold; color: #0000a9;">Attendee Join</button>
+
+
+	</div>
+</div>
+<div id="img_hostAvatar"></div>
+</body>
+<script src="https://local.qa.webex.com/latest/pbconfig.js"></script>
 	<script src="https://local.qa.webex.com/latest/web-content/pbloader.js"></script>
 
 	<script>
@@ -51,47 +94,4 @@
 			);
 		};
 	</script>
-
-</head>
-<body>
-<div id="joinForm">
-	<table>
-		<tr>
-			<td class="meetingForm">
-				<div>
-					<label id="goSiteURL" for="siteURL">Site URL*:</label>
-					<input id="siteURL" type="text">
-				</div>
-				<div>
-					<label for="MeetingKey">Meeting Key*:</label>
-					<input id="MeetingKey" type=text>
-					<label class="col2label" for="password">Password:</label>
-					<input id="password" type="text">
-				</div>
-
-				<div>
-					<label for="userDisplayName">Display Name*:</label>
-					<input id="userDisplayName" type="text">
-				</div>
-
-
-
-				<span class="b1"></span>
-				<span class="b2"></span>
-				<span class="b3"></span>
-				<span class="b4"></span>
-			</td>
-
-		</tr>
-	</table>
-	<div class="command">
-
-        <button onclick="joinMeeting()" style="font-weight:bold; color: #0000a9;">Attendee Join</button>
-
-
-	</div>
-</div>
-<div id="img_hostAvatar"></div>
-</body>
-
 </html>
