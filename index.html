@@ -10,11 +10,8 @@
 
 	<script>
 		//jump to https for development. 55555 is xiaole's port. if other need customized port, add it behind 55555.
-		var demoConf = {},
-			$MeetingKey = document.getElementById("MeetingKey"),
-			$siteURL = document.getElementById("siteURL"),
-			$userName = document.getElementById("userDisplayName"),
-			$password = document.getElementById("password");
+		var demoConf = {};
+			
 
 		window.preConf = {
 			langStr: demoConf.lang,
@@ -25,6 +22,11 @@
 
 		window.joinMeeting = function () {
 
+			var $MeetingKey = document.getElementById("MeetingKey"),
+			$siteURL = document.getElementById("siteURL"),
+			$userName = document.getElementById("userDisplayName"),
+			$password = document.getElementById("password");
+			
 			window.pbLoader.launchMeeting({
 					launchType: "join",
 					MeetingKey: $MeetingKey.val().replace(/ /g, ""),
