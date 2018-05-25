@@ -11,7 +11,7 @@
 	<script>
 		//jump to https for development. 55555 is xiaole's port. if other need customized port, add it behind 55555.
 		var demoConf = {};
-			
+
 
 		window.preConf = {
 			langStr: demoConf.lang,
@@ -21,22 +21,21 @@
 		};
 
 		window.joinMeeting = function () {
-
 			var $MeetingKey = document.getElementById("MeetingKey"),
-			$siteURL = document.getElementById("siteURL"),
-			$userName = document.getElementById("userDisplayName"),
-			$password = document.getElementById("password");
-			
+				$siteURL = document.getElementById("siteURL"),
+				$userName = document.getElementById("userDisplayName"),
+				$password = document.getElementById("password");
+
 			window.pbLoader.launchMeeting({
 					launchType: "join",
-					MeetingKey: $MeetingKey.val().replace(/ /g, ""),
+					MeetingKey: $MeetingKey.value.replace(/ /g, ""),
 					userEmail: "test@cisco.com",
-					userDisplayName: $userDisplayName.val(),
-					password: $password.val(),
-					siteURL: $siteURL.val(),
+					//userDisplayName: $userDisplayName.value,
+					password: $password.value,
+					siteURL: $siteURL.value,
 					//hostAvatarURL: $hostAvatarURL.val(),
 					//sessionTicket: isGetHostRole ? $sessionTicket.val() || "" : "",
-					userName: $userName.val()
+					userName: $userName.value
 					//isPersonalRoom: $isPersonalRoom.val() === "Yes",
 					//spaceMeeting: $spaceMeeting.val() === "Yes",
 					//hostDisplayName: $hostName.val()
