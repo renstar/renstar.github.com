@@ -3,52 +3,50 @@
 <head>
 	<title>For v3 new loader</title>
 	<meta charset="utf-8"/>
-	<link rel="stylesheet" href="https://local.qa.webex.com/latest/web-content/_demo/demoLoader.css"/>
 	<script src="https://local.qa.webex.com/latest/3rd-framework/jquery-1.7.2.min.js"></script>
 	
-
+	<style>
+		.joinForm{
+			text-align: center;
+		}
+		.form_table {
+			padding: 10px;
+			display: inline-block;
+			margin: 0 auto;
+			border: 1px solid
+		}
+		div {
+			margin: 20px 0;
+		}
+		label {
+			display: inline-block;
+			width: 150px;
+			text-align: left;
+		}
+		input{
+			display: inline-block;
+			width: 300px
+		}
+	</style>
 </head>
 <body>
-<div id="joinForm">
-	<table>
-		<tr>
-			<td class="meetingForm">
-				<div>
-					<label id="goSiteURL" for="siteURL">Site URL*:</label>
-					<input id="siteURL" type="text">
-				</div>
-				<div>
-					<label for="MeetingKey">Meeting Key*:</label>
-					<input id="MeetingKey" type=text>
-				
-					
-				</div>
-
-				<div>
-					<label for="userDisplayName">Display Name*:</label>
-					<input id="userDisplayName" type="text">
-				</div>
-
-
-
-				<span class="b1"></span>
-				<span class="b2"></span>
-				<span class="b3"></span>
-				<span class="b4"></span>
-			</td>
-
-		</tr>
-	</table>
+<div class="joinForm">
+	<div class="form_table">
+		<div>
+			<label id="goSiteURL" for="siteURL">Site URL*:</label>
+			<input id="siteURL" type="text">
+		</div>
+		<div>
+			<label for="MeetingKey">Meeting Key*:</label>
+			<input id="MeetingKey" type=text>
+		</div>
+		<div>
+			<label for="userDisplayName">Display Name*:</label>
+			<input id="userDisplayName" type="text">
+		</div>
+	</div>
 	<div class="command">
-
-    
-			 
-			 
-			 
-			 
-	<button onclick="joinMeeting()" style="font-weight:bold; color: #0000a9;">Join Webex</button>
-
-
+		<button onclick="joinMeeting()" style="font-weight:bold; color: #0000a9;">Join Webex</button>
 	</div>
 </div>
 
@@ -72,13 +70,13 @@
 			var $MeetingKey = document.getElementById("MeetingKey"),
 				$siteURL = document.getElementById("siteURL"),
 				$userName = document.getElementById("userDisplayName");
-				
+
 
 			window.pbLoader.launchMeeting({
 					launchType: "join",
 					MeetingKey: $MeetingKey.value.replace(/ /g, ""),
 					userEmail: "test@cisco.com",
-					//userDisplayName: $userDisplayName.value,
+					userDisplayName: $userName.value,
 				
 					siteURL: $siteURL.value,
 					//hostAvatarURL: $hostAvatarURL.val(),
