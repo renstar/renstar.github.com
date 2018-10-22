@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Webex Web App SDK demo</title>
+	<meta charset="utf-8"/>
+	<script src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+
+	<style>
+		.joinForm {
+			text-align: center;
+		}
+
+		.form_table {
+			padding: 10px;
+			display: inline-block;
+			margin: 0 auto;
+			border: 1px solid
+		}
+
+		div {
+			margin: 20px 0;
+		}
+
+		label {
+			display: inline-block;
+			width: 150px;
+			text-align: left;
+		}
+
+		input {
+			display: inline-block;
+			width: 300px
+		}
+	</style>
+</head>
+<body>
+<div class="joinForm">
+	<div class="form_table">
+		<div>
+			<label id="goSiteURL" for="siteURL">Site URL*:</label>
+			<input id="siteURL" type="text">https://t29cmri1.qa.webex.com/t29cmri1</input>
+		</div>
+		<div>
+			<label for="MeetingKey">Meeting Key*:</label>
+			<input id="MeetingKey" type=text>110 321 506</input>
+		</div>
+		<div>
+			<label for="userDisplayName">Display Name*:</label>
+			<input id="userDisplayName" type="text">mickel test</input>
+		</div>
+	</div>
+	<div class="command">
+		<button onclick="joinMeeting()" style="font-weight:bold; color: #0000a9;">Join Webex</button>
+	</div>
+</div>
+
+
+
+<!--<script src="https://t29cmri1.qa.webex.com/pb/web/latest3.0/pbloader.js"></script>-->
+	
+<script src="https://local.qa.webex.com/latest/web-content/pbloader.js?lang=en_US"></script>
+	
+
+<script>
+	window.joinMeeting = function() {
+		var $MeetingKey = document.getElementById("MeetingKey"),
+			$siteURL = document.getElementById("siteURL"),
+			$userName = document.getElementById("userDisplayName");
+
+		window.pbLoader.launchMeeting({
+				launchType: "join",
+				MeetingKey: $MeetingKey.value.replace(/ /g, ""),
+				userEmail: "test@cisco.com",
+				userDisplayName: $userName.value,
+				siteURL: $siteURL.value
+			}, {
+				start_handler: function() {
+					console.log("[@Train]: Meeting start handler applied.");
+				},
+				close_handler: function() {
+					console.log("[@Train]: Meeting close handler applied.");
+				}
+			}
+		);
+	};
+</script>
+</body>
+
+</html>
