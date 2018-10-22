@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Webex Web App SDK demo</title>
+	<title>Join Webex Meeting</title>
 	<meta charset="utf-8"/>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
 	<script src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
 
 	<style>
@@ -12,6 +14,7 @@
 
 		.form_table {
 			padding: 10px;
+			width: 320px;
 			display: inline-block;
 			margin: 0 auto;
 			border: 1px solid
@@ -23,43 +26,90 @@
 
 		label {
 			display: inline-block;
-			width: 150px;
+			width: 300px;
+			height: 25px;			
+			line-height: 25px;
+			padding: 0 12px;
 			text-align: left;
 		}
 
 		input {
 			display: inline-block;
-			width: 300px
+			width: 260px;
+			height: 35px;			
+			line-height: 35px;
+			font-size: 13px;
+			padding: 0 12px;
 		}
+		
+.el-button{display:inline-block;white-space:nowrap;cursor:pointer;background:#858688;color:#fff;text-align:center;margin:0;min-width:100px;/* border:2px solid transparent; */padding:8px 16px;font-size:16px;border-radius:25px;}
+.el-button:focus,.el-button:hover{background:#78797a;color:#fff}
+.el-button+.el-button{margin-left:10px}.el-button:active{background:#6a6b6d;outline:0}
+.el-button.is-loading{position:relative;pointer-events:none}.el-button.is-loading:before{pointer-events:none;content:"";position:absolute;left:-1px;top:-1px;right:-1px;bottom:-1px;border-radius:inherit;background-color:hsla(0,0%,100%,.35)}.el-button.is-disabled,.el-button.is-disabled:focus,.el-button.is-disabled:hover{color:#aeaeaf;cursor:not-allowed;background-image:none;background-color:#ebebec;border-color:#ebebec}.el-button.is-disabled.el-button--text{background-color:transparent}.el-button.is-disabled.is-plain,.el-button.is-disabled.is-plain:focus,.el-button.is-disabled.is-plain:hover{background-color:#fff;border-color:#adadad;color:#bfd0d9}.el-button.is-active{color:#037fae;border-color:#037fae}.el-button.is-plain:focus,.el-button.is-plain:hover{background:#fff;border-color:#049fd9;color:#049fd9}.el-button.is-plain:active{background:#fff;border-color:#037fae;color:#037fae;outline:0}.el-button--primary{/* color:#fff; *//* background-color:#049fd9; *//* border-color:#049fd9; */}
+.el-button--primary:focus{border:1px solid transparent}
+.el-button--primary{color:#049fd9}
+.el-button--primary {
+    color: #fff;
+    background-color: #049fd9;
+    border-color: #049fd9;
+}
+.el-button--primary:focus,.el-button--primary:hover{background:#0393c9;border-color:#0393c9;color:#fff}
+.el-button--primary:focus{border-color:#000}.el-button--primary:active{background:#0387b8;border-color:#0387b8;color:#fff;outline:0}
+.el-button--primary.is-active{background:#037fae;border-color:#037fae;color:#fff}
+.el-button--primary.is-plain{background:#858688;border:1px solid #d9d9d9;color:#fff}
+.el-button--primary.is-plain:focus,
+.el-button--primary.is-plain:hover{background:#fff;border-color:#049fd9;color:#049fd9}
+.el-button--primary.is-plain:active{background:#fff;border-color:#037fae;color:#037fae;outline:0}
+.joinMeeting_input{display:table-cell;vertical-align:middle;border-radius:18px;border:1px solid #ebebec;padding:3px 40px 3px 16px;height:36px;line-height:30px;font-size:14px;width:260px;background:#ffffff;outline:none}
+.joinMeeting_input:focus{border-color:#049fd9!important;background-color:#ebebec!important;border-width:1px!important}
+.joinMeeting_input:hover{background-color:#d7d7d8;border-color:#d7d7d8}
+.joinMeeting_input:active{background-color:#aeaeaf;border-color:#aeaeaf}
+.joinMeeting_input.error{background-color:#fedcd7!important;border-color:#f96452!important;border-width:1px!important}
+
+.text-input {
+    width: 340px;
+    height: 42px;
+    mix-blend-mode: undefined;
+    border-radius: 21px;
+    background-color: #ffffff;
+    border: solid 1px #9e9fa2;
+    text-indent: 21px;
+    outline: none;
+    color: #9e9fa2;
+    border: 1px solid transparent;
+    border-color: #9e9fa2;
+    padding-left: 17px;
+    padding-right: 17px;
+}
 	</style>
 </head>
 <body>
 <div class="joinForm">
 	<div class="form_table">
-		<div>
-			<label id="goSiteURL" for="siteURL">Site URL*:</label>
-			<input id="siteURL" type="text">https://t29cmri1.qa.webex.com/t29cmri1</input>
+		<div align='left'>
+		<img src="https://t29cmri1.qa.webex.com/mw3300/mywebex/html/img/cisco-webex-meetings.png?ver=458475262">
 		</div>
 		<div>
-			<label for="MeetingKey">Meeting Key*:</label>
-			<input id="MeetingKey" type=text>110 321 506</input>
+			<label id="goSiteURL" for="siteURL">Site URL:</label>
+			<input id="siteURL" type="text" class="joinMeeting_input" value="https://t29cmri1.qa.webex.com/t29cmri1">
 		</div>
 		<div>
-			<label for="userDisplayName">Display Name*:</label>
-			<input id="userDisplayName" type="text">mickel test</input>
+			<label for="MeetingKey">Meeting Key:</label>
+			<input id="MeetingKey" class="joinMeeting_input" type=text value="110321506">
+		</div>
+		<div>
+			<label for="userDisplayName">User Name:</label>
+			<input id="userDisplayName" class="joinMeeting_input" type="text" value="Scott test">
 		</div>
 	</div>
 	<div class="command">
-		<button onclick="joinMeeting()" style="font-weight:bold; color: #0000a9;">Join Webex</button>
+		<button onclick="joinMeeting()" class="el-button el-button--primary">Join Meeting</button>
 	</div>
 </div>
 
 
 
-<!--<script src="https://t29cmri1.qa.webex.com/pb/web/latest3.0/pbloader.js"></script>-->
-	
-<script src="https://local.qa.webex.com/latest/web-content/pbloader.js?lang=en_US"></script>
-	
+<script src="https://t29cmri1.qa.webex.com/pb/web/latest3.0/pbloader.js"></script>
 
 <script>
 	window.joinMeeting = function() {
